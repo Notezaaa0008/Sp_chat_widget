@@ -71,7 +71,7 @@ export default class SpRasaX extends React.Component<ISpRasaXProps, ISpRasaXStat
               bot_uttered: e => {
                 if (e.attachment) {
                   // set timeout response
-                  setTimeout(() => this.addEventToImg(), 2000);
+                  setTimeout(() => this.addEventToImg(), 3000);
                 }
               },
               connect: () => console.log("connection established")
