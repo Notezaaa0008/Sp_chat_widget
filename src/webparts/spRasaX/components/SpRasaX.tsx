@@ -13,7 +13,8 @@ export default class SpRasaX extends React.Component<ISpRasaXProps, ISpRasaXStat
     this.state = {
       fullName: "",
       viewImg: false,
-      image: ""
+      image: "",
+      listImg: []
     };
   }
 
@@ -33,8 +34,10 @@ export default class SpRasaX extends React.Component<ISpRasaXProps, ISpRasaXStat
   private addEventToImg() {
     let elementImg = document.getElementsByClassName("rw-image-frame");
     for (let i = 0; i < elementImg.length; i++) {
-      console.log(elementImg[i]);
       elementImg[i].addEventListener("click", e => this.handleViewImg(e));
+    }
+    for (let j = 0; j < this.state.listImg.length; j++) {
+      this.state.listImg.pop();
     }
   }
 
@@ -70,8 +73,9 @@ export default class SpRasaX extends React.Component<ISpRasaXProps, ISpRasaXStat
             onSocketEvent={{
               bot_uttered: e => {
                 if (e.attachment) {
+                  this.state.listImg.push(e.attachment);
                   // set timeout response
-                  setTimeout(() => this.addEventToImg(), 3000);
+                  setTimeout(() => this.addEventToImg(), (this.state.listImg.length + 1) * 1000);
                 }
               },
               connect: () => console.log("connection established")

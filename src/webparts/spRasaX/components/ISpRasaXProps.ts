@@ -10,4 +10,5 @@ export interface ISpRasaXState {
   fullName: string;
   viewImg: boolean;
   image: string;
+  listImg: Array<any>;
 }
