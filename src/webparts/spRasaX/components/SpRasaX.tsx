@@ -36,9 +36,7 @@ export default class SpRasaX extends React.Component<ISpRasaXProps, ISpRasaXStat
     for (let i = 0; i < elementImg.length; i++) {
       elementImg[i].addEventListener("click", e => this.handleViewImg(e));
     }
-    for (let j = 0; j < this.state.listImg.length; j++) {
-      this.state.listImg.pop();
-    }
+    this.setState({ listImg: [] });
   }
 
   private handleViewImg(e) {
@@ -73,7 +71,7 @@ export default class SpRasaX extends React.Component<ISpRasaXProps, ISpRasaXStat
             onSocketEvent={{
               bot_uttered: e => {
                 if (e.attachment) {
-                  this.state.listImg.push(e.attachment);
+                  this.setState({ listImg: [...this.state.listImg, e.attachment] });
                   // set timeout response
                   setTimeout(() => this.addEventToImg(), (this.state.listImg.length + 1) * 1000);
                 }
