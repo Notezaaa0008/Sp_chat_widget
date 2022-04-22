@@ -63,7 +63,7 @@ export default class SpRasaX extends React.Component<ISpRasaXProps, ISpRasaXStat
         {this.state.fullName && (
           <Widget
             initPayload={"/greet"}
-            socketUrl={"http://localhost:5005"}
+            socketUrl={"https://ogcsmartchatbot-qa-endpoint.pttplc.com/"}
             socketPath={"/socket.io/"}
             customData={{ language: "en", fullName: this.state.fullName }} // arbitrary custom data. Stay minimal as this will be added to the socket
             title={"OGC Smart Chatbot"}
